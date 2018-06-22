@@ -1,0 +1,187 @@
+<HTML>
+<HEAD>
+<TITLE>LANMonkey Version 2.6</TITLE>
+<HTA:APPLICATION 
+     APPLICATIONNAME="IPToolz"
+     SCROLL="yes"
+     SINGLEINSTANCE="yes"
+     SysMenu="yes"
+     ICON="icon/lanmonkey.ico"
+>
+<!---------------- POP-UP SCRIPT BEGINS HERE ----------------> 
+	<SCRIPT LANGUAGE="JavaScript">
+		function popUp(URL) {
+		day = new Date();
+		id = day.getTime();
+		eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=0,width=360,height=550,left = 320,top = 150');");
+		}
+		// End -->
+	</script>
+<!---------------- POP-UP SCRIPT ENDS HERE ----------------> 
+
+<style type="text/css">
+
+#popitmenu{
+position: absolute;
+background-color: white;
+border:1px solid black;
+font: normal 12px Verdana;
+line-height: 18px;
+z-index: 100;
+visibility: hidden;
+}
+
+#popitmenu a{
+text-decoration: none;
+padding-left: 6px;
+color: black;
+display: block;
+}
+
+#popitmenu a:hover{ /*hover background color*/
+background-color: #CCFF9D;
+}
+
+</style>
+
+
+</HEAD>
+<script language="JavaScript" src="menu/randombackground.js"></script> 
+
+<BODY background="" style="background-repeat:repeat;"  BGCOLOR="#E8E8E8" onLoad="javascript:popUp('toolz/popup.htm')">
+<CENTER>
+<TABLE ALIGN="CENTER">
+	<TR>
+	<TD>
+	<CENTER>
+		<FONT SIZE="4" COLOR="BLUE">
+			LANMonkey Version 2.6
+		</FONT>
+		<BR />
+		<I>
+			<b>Network Diagnostics Tool for use with Microsoft Windows 2000, XP Professional and Home<b>
+		</I>
+		<BR />
+		<FONT COLOR="RED">
+			<I>
+				"Monkey around at your own risk." 
+			</I>
+		</FONT>
+		<BR />
+		By: <FONT COLOR="BLUE">Brad Voris </FONT><FONT COLOR="BLACK">&</FONT><FONT COLOR="BLUE"> Ronnie Leday</FONT>
+		<BR />
+		<IMG BORDER="0" SRC="images/monkeyswing.gif"><IMG BORDER="0" SRC="images/monkeyswing2.gif">
+	</CENTER>
+	<BR />
+	<BR />
+<!---------------- CSS MENU BEGINS HERE ----------------> 
+<!--Links used to initiate the sub menus. Pass in the desired submenu index numbers (ie: 0, 1) -->
+<a href="toolz/lan.htm" target="iframie" onMouseover="showit(0)">LAN Info</a> | <a href="toolz/myip.htm" target="iframie" onMouseover="showit(1)">Refresh IP</a> | <a href="toolz/ping.htm" target="iframie" onMouseover="showit(2)">Ping IP</a> | <a href="toolz/pathping.htm" target="iframie" onMouseover="showit(3)">Path Ping</a> | <a href="toolz/xpfirewall.htm" target="iframie" onMouseover="showit(4)">XP Firewall</a> | <a href="toolz/trace.htm" target="iframie" onMouseover="showit(5)">Trace Route</a> | <a href="toolz/dnslookup.htm" target="iframie" onMouseover="showit(6)">DNS Lookup</a> | <a href="toolz/nodes.htm" target="iframie" onMouseover="showit(7)">List Nodes</a> | <a href="toolz/route.htm" target="iframie" onMouseover="showit(8)">Route Table</a> | <a href="toolz/netstat.htm" target="iframie" onMouseover="showit(9)">Netstat</a> | <a href="toolz/shutdown.htm" target="iframie" onMouseover="showit(10)">XP Shutdown</a> | <a href="toolz/cmdlist.htm" target="iframie" onMouseover="showit(11)">CMD List</a> | <a href="toolz/author.htm" target="iframie" onMouseover="showit(12)">Author</a><br>
+
+<!-- Edit the dimensions of the below, plus background color-->
+<ilayer width=800 height=32 name="dep1" bgColor="#E8E8E8">
+<layer name="dep2" width=800 height=32>
+</layer>
+</ilayer>
+<div id="describe" style="background-color:#E8E8E8;width:800px;height:32px" onMouseover="clear_delayhide()" onMouseout="resetit(event)"></div>
+
+
+<script language="JavaScript1.2">
+
+/*
+Tabs Menu (mouseover)- By Dynamic Drive
+For full source code and more DHTML scripts, visit http://www.dynamicdrive.com
+This credit MUST stay intact for use
+*/
+
+var submenu=new Array()
+
+//Set submenu contents. Expand as needed. For each content, make sure everything exists on ONE LINE. Otherwise, there will be JS errors.
+ 
+submenu[0]='<font size="2" face="Verdana"><b>This tool displays your LAN card info such as I.P. address, node type, MAC address, etc.</b></font>'
+
+submenu[1]='<font size="2" face="Verdana"><b>This tool releases and renews your I.P. address on all your LAN adapters</b></font>'
+
+submenu[2]='<font size="2" face="Verdana"><b>This tool allows you to ping (send an ICMP echo) an I.P. address</b></font>'
+
+submenu[3]='<font size="2" face="Verdana"><b>This tool should be used to determine an internet or LAN outage</b></font>'
+
+submenu[4]='<font size="2" face="Verdana"><b>Windows XP Firewall Port viewer</b></font>'
+
+submenu[5]='<font size="2" face="Verdana"><b>This tool allows you to run a trace route to a network destination</b></font>'
+
+submenu[6]='<font size="2" face="Verdana"><b>This tool is a local/remote DNS lookup </b></font>'
+
+submenu[7]='<font size="2" face="Verdana"><b>This tool lists the nodes on a local network</b></font>'
+
+submenu[8]='<font size="2" face="Verdana"><b>This tool current routing table on your computer</b></font>'
+
+submenu[9]='<font size="2" face="Verdana"><b>Displays your current protocol statistics and current TCP/IP network connections.</b></font>'
+
+submenu[10]='<font size="2" face="Verdana"><b>Shutdown your Windows XP computer</b></font>'
+
+submenu[11]='<font size="2" face="Verdana"><b>Displays a list of the DOS Networking commands in LAN Monkey</b></font>'
+
+submenu[12]='<font size="2" face="Verdana"><b>Read about the authors that developed the program LAN Monkey</b></font>'
+
+
+//Set delay before submenu disappears after mouse moves out of it (in milliseconds)
+var delay_hide=500
+
+/////No need to edit beyond here
+
+var menuobj=document.getElementById? document.getElementById("describe") : document.all? document.all.describe : document.layers? document.dep1.document.dep2 : ""
+
+function showit(which){
+clear_delayhide()
+thecontent=(which==-1)? "" : submenu[which]
+if (document.getElementById||document.all)
+menuobj.innerHTML=thecontent
+else if (document.layers){
+menuobj.document.write(thecontent)
+menuobj.document.close()
+}
+}
+
+function resetit(e){
+if (document.all&&!menuobj.contains(e.toElement))
+delayhide=setTimeout("showit(-1)",delay_hide)
+else if (document.getElementById&&e.currentTarget!= e.relatedTarget&& !contains_ns6(e.currentTarget, e.relatedTarget))
+delayhide=setTimeout("showit(-1)",delay_hide)
+}
+
+function clear_delayhide(){
+if (window.delayhide)
+clearTimeout(delayhide)
+}
+
+function contains_ns6(a, b) {
+while (b.parentNode)
+if ((b = b.parentNode) == a)
+return true;
+return false;
+}
+
+</script>
+<!---------------- CSS MENU ENDS HERE ----------------> 
+
+<!---------------- EXIT BUTTON BEGINS HERE ----------------> 
+	<CENTER>
+		<FORM>
+			<INPUT type="button" name="Exit" value="Exit the program" onClick="javascript:exit()">
+		</FORM>
+		<script>
+			function exit(){
+			close();
+			}
+		</script>
+	</CENTER>
+<!---------------- EXIT BUTTON ENDS HERE ----------------> 
+
+		<IFRAME SRC="toolz/clear.htm" NAME="iframie" WIDTH=800 HEIGHT=100 APPLICATION="yes"></IFRAME>
+	</TD>
+	</TR>
+</TABLE>
+<CENTER>
+</BODY>
+</HTML>
