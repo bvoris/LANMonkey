@@ -1,0 +1,47 @@
+<html>
+<head><title>Flush Local DNS</title>
+<HTA:APPLICATION ID="oHTA";
+  APPLICATIONNAME="FlushDNS";
+  BORDER="thin";
+  BORDERSTYLE="normal";
+  SINGLEINSTANCE="no";
+>
+</head>
+
+<body bgcolor="#E8E8E8" >
+<font size=2 face="Century Gothic, Tahoma, Arial" color="black">
+<script language="VBScript" type="text/vbscript">
+set objShell = CreateObject("WScript.Shell")
+strOut=""
+sub route
+cmdarg="%comspec% /c ipconfig /flushdns "
+set objExCmd = objShell.Exec(cmdarg)
+strOut=objExCmd.StdOut.ReadAll
+Set regEx = New RegExp
+regEx.Pattern = "[\f\n\r\v]+"
+regEx.Global = True
+regEx.Multiline = True
+strOut = regEx.Replace(strOut, "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")
+
+end sub
+//-->
+</script>
+<p><b>Flush DNS </b>
+<br>
+<br>
+<FONT COLOR="BLUE"><I>By clicking Discover this script will flush the DNS settings</I></FONT>
+<br>
+<hr noshode color="#000000"><br>
+    <p><input type="submit" name="B1" value="Discover"  onclick="route"></p>
+
+	<BR />
+	<BR />
+
+<script language="JavaScript">
+<!--
+	if (window.resizeTo) self.resizeTo(600,400);
+//-->
+</script>
+<BR />
+</BODY>
+</HTML>

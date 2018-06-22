@@ -1,0 +1,76 @@
+<HTML>
+<HEAD><TITLE>Change I.P. Address</TITLE>
+<HTA:APPLICATION ID="oHTA";
+  APPLICATIONNAME="DisplayRoute";
+  BORDER="thin";
+  BORDERSTYLE="normal";
+  SINGLEINSTANCE="no";
+>
+</HEAD>
+
+<BODY bgCOLOR="#E8E8E8" >
+	<SCRIPT language="VBScript" type="text/vbscript">
+		set objShell = CreateObject("WScript.Shell")
+		strOut=""
+		sub release
+		cmdarg="%comspec% /c ipconfig.exe /release"
+		set objExCmd = objShell.Exec(cmdarg)
+		strOut=objExCmd.StdOut.ReadAll
+		Set regEx = New RegExp
+		regEx.Pattern = "[\f\n\r\v]+"
+		regEx.Global = True
+		regEx.Multiline = True
+		end sub
+		//-->
+	</script>
+
+	<script language="VBScript" type="text/vbscript">
+		set objShell = CreateObject("WScript.Shell")
+		strOut=""
+		sub renew
+		cmdarg="%comspec% /c ipconfig.exe /renew"
+		set objExCmd = objShell.Exec(cmdarg)
+		strOut=objExCmd.StdOut.ReadAll
+		Set regEx = New RegExp
+		regEx.Pattern = "[\f\n\r\v]+"
+		regEx.Global = True
+		regEx.Multiline = True
+		end sub
+		//-->
+	</script>
+	<P><B>Release IP Address </B>
+		<BR />
+		<BR />
+		<FONT COLOR="BLUE">
+			By clicking 
+				<I>
+					Release I.P.
+				</I>
+				your LAN adapter(s) I.P. address(es) will be released
+		</FONT>
+		<BR />
+		<hr noshode COLOR="#000000"><BR />
+		<INPUT type="submit" name="B1" value="Release I.P."  onclick="release">
+	</P>
+	<P><B>Renew IP Address </B>
+		<BR />
+		<BR />
+		<FONT COLOR="BLUE">
+			By clicking 
+				<I>
+					Renew I.P.
+				</I> 
+				your LAN adapter(s) I.P. address(es) will be renewed
+		</FONT>
+		<BR />
+		<hr noshode COLOR="#000000"><BR />
+		<INPUT type="submit" name="B1" value="Renew I.P."  onclick="renew">
+	</P>
+	<SCRIPT language="JavaScript">
+	<!--
+		if (window.resizeTo) self.resizeTo(600,400);
+	//-->
+	</SCRIPT>
+
+</BODY>
+</HTML>

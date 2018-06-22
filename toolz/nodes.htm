@@ -1,0 +1,64 @@
+<HTML>
+<HEAD><TITLE>Display File & Print Sharing Nodes</TITLE>
+<HTA:APPLICATION ID="oHTA";
+  APPLICATIONNAME="Displaynodes";
+  BORDER="thin";
+  BORDERSTYLE="normal";
+  SINGLEINSTANCE="no";
+>
+
+</HEAD>
+
+<BODY BGCOLOR="#E8E8E8" >
+	
+		<SCRIPT language="VBScript" type="text/vbscript">
+			set objShell = CreateObject("WScript.Shell")
+			strOut=""
+			sub route
+			cmdarg="%comspec% /c net.exe view "
+			set objExCmd = objShell.Exec(cmdarg)
+			strOut=objExCmd.StdOut.ReadAll
+			Set regEx = New RegExp
+			regEx.Pattern = "[\f\n\r\v]+"
+			regEx.Global = True
+			regEx.Multiline = True
+			strOut = regEx.Replace(strOut, "<br>")
+			TraceOut.innerHTML= strOut
+			end sub
+			//-->
+		</SCRIPT>
+	</FONT>
+	<P><B>Current File & Print Sharing Nodes Table </B>
+		<BR />
+		<BR />
+		<FONT COLOR="BLUE">
+			<I>
+				By clicking Discover the workstation and server nodes with File and Print sharing should appear.
+			</I>
+		</FONT>
+		<BR />
+		<hr noshode color="#000000"><BR />
+		<INPUT type="submit" name="B1" value="Discover"  onclick="route">
+		<script language="Javascript1.2">
+			<!--
+			var message = "Print this page";
+			function printpage() {
+			window.print();  
+			}
+			document.write("<form><input type=button "
+			+"value=\""+message+"\" onClick=\"printpage()\"></form>");
+			//-->
+		</script>
+		<BR />
+		<BR />
+		<DIV id=TraceOut></DIV>
+	</P>
+	<SCRIPT language="JavaScript">
+	<!--
+		if (window.resizeTo) self.resizeTo(600,400);
+	//-->
+	</SCRIPT>
+
+
+</BODY>
+</HTML>

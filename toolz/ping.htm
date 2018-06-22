@@ -1,0 +1,61 @@
+<HTML>
+<HEAD><TITLE>Ping IP</TITLE>
+<HTA:APPLICATION ID="oHTA";
+  APPLICATIONNAME="PingIP";
+  BORDER="thin";
+  BORDERSTYLE="normal";
+  SINGLEINSTANCE="no";
+>
+</HEAD>
+
+<BODY BGCOLOR="#E8E8E8" >
+	
+		<SCRIPT language="VBScript" type="text/vbscript">
+			set objShell = CreateObject("WScript.Shell")
+			strOut=""
+			sub pingip
+			cmdarg="%comspec% /c ping.exe " & T1.value
+			set objExCmd = objShell.Exec(cmdarg)
+			strOut=objExCmd.StdOut.ReadAll
+			Set regEx = New RegExp
+			regEx.Pattern = "[\f\n\r\v]+"
+			regEx.Global = True
+			regEx.Multiline = True
+			strOut = regEx.Replace(strOut, "<br>")
+			TraceOut.innerHTML= strOut
+			end sub
+			//-->
+		</SCRIPT>
+	<P><B>Ping IP HTA </B>
+	<BR />
+	<BR />
+	<FONT COLOR="BLUE">
+		<I>
+			By filling in the I.P. address or web URL and clicking Discover you will be able to run a network ping to that resource
+		</I>
+	</FONT>
+	<BR />
+	<hr noshode color="#000000"><br>
+    Insert I.P. address here: <input type="text" SIZE="40" name="T1">
+    <INPUT type="submit" name="B1" value="Discover"  onclick="pingip">
+		<script language="Javascript1.2">
+			<!--
+			var message = "Print this page";
+			function printpage() {
+			window.print();  
+			}
+			document.write("<form><input type=button "
+			+"value=\""+message+"\" onClick=\"printpage()\"></form>");
+			//-->
+		</script>
+	<BR />
+	<BR />
+	<DIV id=TraceOut></DIV>
+	</P>
+	<SCRIPT language="JavaScript">
+	<!--
+		if (window.resizeTo) self.resizeTo(600,400);
+	//-->
+	</SCRIPT>
+</BODY>
+</HTML>
